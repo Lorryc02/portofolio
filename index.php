@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protfolio. - Razafimahefa Lorryc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Styles généraux et variables */
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2c2c2c;
+            --accent-color: #ffc107;
+            --text-color: #f1f1f1;
+            --font-poppins: 'Poppins', sans-serif;
+            --font-heading: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-poppins);
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+        }
+
+       .main-header {
+    min-height: 100vh;
+    background: url('image/header.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+        /* Overlay pour le motif en points */
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 600;
+            margin-left: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            flex-grow: 1;
+            text-align: left;
+            padding-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(0,0,0,0.6);
+            border-left: 5px solid var(--accent-color);
+            max-width: 500px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+    
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: 300px;
+                background-size: contain;
+                mask-image: none;
+                -webkit-mask-image: none;
+                margin-top: 2rem;
+            }
+        }
+
+        /* Section "Qui suis-je ?" */
+        .about-section {
+            background-color: var(--secondary-color);
+            padding: 8rem 0;
+        }
+
+        .about-image-wrapper {
+            background-color: rgba(0,0,0,0.4);
+            border: 5px solid var(--accent-color);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .about-image-wrapper::after {
+            content: '\f105';
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .about-image-wrapper img {
+            max-width: 100%;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease-in-out;
+        }
+
+        .about-image-wrapper:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Section "Mon travail" */
+        .works-section {
+            background-color: var(--primary-color);
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+            position: relative;
+        }
+
+        .works-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+
+        .works-nav .btn {
+            border-color: var(--accent-color) !important;
+            color: var(--accent-color) !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .works-nav .btn:hover,
+        .works-nav .btn.active {
+            background-color: var(--accent-color) !important;
+            color: var(--primary-color) !important;
+            transform: scale(1.05);
+        }
+
+        .work-item {
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+        }
+
+   
+
+        .work-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .work-item:hover .work-image {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white fw-bold" href="#">PROTOFILO.</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#home">Acceuil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">A propos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#works">Projets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-section container-fluid d-flex align-items-center justify-content-center">
+            <div class="hero-content text-white p-4">
+                <p class="fs-4 mb-2">Je m'appelle</p>
+                <h1 class="display-3 fw-bold mb-3">Razafimahefa Lorryc</h1>
+                <p class="mb-4">
+                    <span class="badge text-bg-warning rounded-0 px-3 py-2 fw-normal">Étudiant en Informatique | Développeur Web & Mobile</span>
+                </p>
+            </div>
+            <div class="hero-image">
+                </div>
+        </div>
+    </header>
+
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                    <div class="about-image-wrapper p-3 d-inline-block">
+                        <img src="image/abt.png" alt="" class="img-fluid" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-lg-7 text-white p-4">
+                    <div class="about-text-content">
+                        <h2 class="display-5 fw-bold text-white mb-4">
+                            Qui suis je <span class="d-block text-warning">Bonjour</span>
+                        </h2>
+                        <p class="mb-3">
+                          Actuellement étudiant en deuxième année de BTS SIO (Services Informatiques aux Organisations), j'ai choisi la spécialisation SLAM (Solutions Logicielles et Applications Métiers) pour me former au développement web et logiciel. Passionné par le design d'interface et l'expérience utilisateur, je suis constamment à l'affût des dernières tendances pour concevoir des applications à la fois esthétiques et intuitives.
+                        </p>
+                        <p>
+                          Mon parcours m'a permis d'acquérir une solide compréhension des langages tels que HTML, CSS, JavaScript, ainsi que des frameworks modernes. Je m'efforce de créer des interfaces utilisateur qui allient fonctionnalité et design percutant.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="works-section py-5">
+        <div class="container-fluid">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-white">
+                    MES PROJETS <span class="d-block text-warning fs-6">BTS SIO</span>
+                </h2>
+            </div>
+<div class="row g-4 justify-content-center"> 
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="work-item p-2 text-center">
+            <div class="work-image" style="background-image: url('image/1.png');"></div>
+            <h5 class="mt-2">Supercar</h5>
+            <div class="mt-2 d-grid gap-2">
+                <a href="docSupercar.php" class="btn btn-primary btn-sm" >Documentation</a>
+                <a href="http://localhost/Portofoliolorryc/MONSUPER/index.php" class="btn btn-outline-secondary btn-sm" >Site web</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="work-item p-2 text-center">
+            <div class="work-image" style="background-image: url('image/2.png');"></div>
+            <h5 class="mt-2">Stage Gasik'art</h5>
+            <div class="mt-2 d-grid gap-2">
+                <a href="docGasik'art.php" class="btn btn-primary btn-sm" >Documentation</a>
+                <a href="http://localhost/gasikart/" class="btn btn-outline-secondary btn-sm" >Site web</a>
+                
+            </div>
+        </div>"
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="work-item p-2 text-center">
+            <div class="work-image" style="background-image: url('image/3.png');"></div>
+            <h5 class="mt-2">Projet 3</h5>
+            <div class="mt-2 d-grid gap-2">
+                <a href="https://example.com/page3" class="btn btn-primary btn-sm" >Voir plus</a>
+                <a href="https://example.com/doc3.pdf" class="btn btn-outline-secondary btn-sm" >Documentation</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="work-item p-2 text-center">
+            <div class="work-image" style="background-image: url('image/4.png');"></div>
+            <h5 class="mt-2">Projet 4</h5>
+            <div class="mt-2 d-grid gap-2">
+                <a href="https://example.com/page4" class="btn btn-primary btn-sm">Voir plus</a>
+                <a href="https://example.com/doc4.pdf" class="btn btn-outline-secondary btn-sm" >Documentation</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
