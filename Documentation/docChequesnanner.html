@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier Projet – Documents</title>
+
+    <style>
+        .back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1f2b74;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+}
+.back-btn:hover {
+    background-color: #16205a;
+    transform: translateY(-2px);
+}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: #f5f6fa;
+            color: #2f3640;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0a0f24, #1f2b74);
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #1f2b74;
+        }
+
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .doc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0f2ff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+            border-left: 5px solid #1f2b74;
+        }
+
+        .doc-item:hover {
+            transform: translateX(5px);
+            background: #e6e9ff;
+        }
+
+        .doc-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .doc-icon {
+            font-size: 1.6rem;
+        }
+
+        .doc-item a {
+            text-decoration: none;
+            color: white;
+            background: #1f2b74;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .doc-item a:hover {
+            background: #16205a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<?php include 'header.php'; ?>
+
+<header>
+    <h1>Dossier du Projet</h1>
+    <p>Téléchargement des documents officiels</p>
+    <a href="../index.html" class="back-btn">← Retour à l'accueil</a>
+</header>
+
+<main>
+    <section>
+        <h2>Documents</h2>
+
+        <div class="doc-list">
+
+            
+            <div class="doc-item">
+                <div class="doc-name">
+                    <div class="doc-icon">📝</div>
+                    Présentation
+                </div>
+                <a href="https://www.canva.com/design/DAG4k3G9g9Y/W7pNkBkflH0H7lkhtOAmAw/edit?utm_content=DAG4k3G9g9Y&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Ouvrir</a>
+            </div>
+
+
+            
+            <div class="doc-item">
+                <div class="doc-name">
+                    <div class="doc-icon">📄</div>
+                    Attestation de stage
+                </div>
+                <a href="ATTESTATION DE STAGE.pdf" target="_blank">Ouvrir</a>
+            </div>
+
+            
+            <div class="doc-item">
+                <div class="doc-name">
+                    <div class="doc-icon">📄</div>
+                    Convention de stage
+                </div>
+                <a href="Convention de Stage_Lorryc (1).pdf" target="_blank">Ouvrir</a>
+            </div>
+
+            
+            <div class="doc-item">
+                <div class="doc-name">
+                    <div class="doc-icon">📄</div>
+                    Bilan de stage
+                </div>
+                <a href="BILAN DE STAGE.pdf" target="_blank">Ouvrir</a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2025 – Portfolio professionnel
+</footer>
+
+</body>
+</html>
