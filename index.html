@@ -198,18 +198,78 @@
     .proj-btn:hover { background: var(--accent-lt); border-color: var(--accent-md); color: var(--accent); }
 
     /* ══ GLPI ══ */
-    #glpi { background: var(--light); padding: 120px 0; }
-    .glpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
-    .glpi-card { padding: 28px; }
-    .glpi-ic { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .glpi-val { font-family: var(--font-h); font-size: 48px; font-weight: 800; line-height: 1; }
-    .glpi-lbl { font-family: var(--font-h); font-size: 16px; font-weight: 700; color: var(--dark); margin: 6px 0 2px; }
-    .glpi-sub { font-size: 11px; color: var(--muted); margin-bottom: 18px; font-family: var(--font-mono); letter-spacing: 0.06em; }
-    .glpi-items { display: flex; flex-direction: column; gap: 7px; }
-    .glpi-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--mid); }
-    .glpi-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-md); flex-shrink: 0; border: 1.5px solid var(--accent); }
-    .glpi-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+   #glpi { background: var(--light); padding: 120px 0; }
+.glpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+.glpi-card { padding: 28px; }
+.glpi-ic { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.glpi-val { font-family: var(--font-h); font-size: 48px; font-weight: 800; line-height: 1; }
+.glpi-lbl { font-family: var(--font-h); font-size: 16px; font-weight: 700; color: var(--dark); margin: 6px 0 2px; }
+.glpi-sub { font-size: 11px; color: var(--muted); margin-bottom: 18px; font-family: var(--font-mono); letter-spacing: 0.06em; }
+.glpi-items { display: flex; flex-direction: column; gap: 7px; }
+.glpi-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--mid); }
+.glpi-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-md); flex-shrink: 0; border: 1.5px solid var(--accent); }
+.glpi-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
 
+/* ==========================================================================
+   AJOUT : Styles pour le nouveau bandeau de Démo sous la grille
+   ========================================================================== */
+.glpi-demo-banner {
+    margin-top: 30px;
+    padding: 30px;
+    background: rgba(79, 70, 229, 0.02); /* Teinte violette très légère */
+    border: 2px dashed #4f46e5;         /* Bordure en pointillés moderne */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.glpi-demo-banner .demo-text h3 {
+    font-family: var(--font-h);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0 0 6px 0;
+}
+
+.glpi-demo-banner .demo-text p {
+    font-size: 13px;
+    color: var(--mid);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.glpi-btn-demo {
+    background: #4f46e5;
+    color: #ffffff !important;
+    padding: 14px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-h);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+
+.glpi-btn-demo:hover {
+    background: #4338ca;
+    transform: translateY(-2px); /* Léger effet d'élévation au survol */
+}
+
+/* Responsive pour le bandeau sur tablette et mobile */
+@media (max-width: 768px) {
+    .glpi-demo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+    .glpi-btn-demo {
+        width: 100%;
+    }
+}
     /* ══ VEILLE ══ */
     #veille { background: var(--white); padding: 120px 0; }
     .veille-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
@@ -517,15 +577,74 @@
 <!-- GLPI -->
 <section id="glpi">
   <div class="wrap">
-    <div class="eyebrow">SUPPORT ITSM</div>
-    <h2 class="h2">Expérience <span>GLPI</span></h2>
+    <div class="eyebrow">LABORATOIRE INFRASTRUCTURE & ITSM</div>
+    <h2 class="h2">Déploiement <span>GLPI</span></h2>
+    
     <div class="glpi-grid">
-      <div class="glpi-card card"><div class="glpi-ic" style="background:#E0F7FA"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="glpi-val" style="color:#0891B2">42</div><div class="glpi-lbl">Tickets résolus</div><div class="glpi-sub">SUPPORT UTILISATEURS</div><div class="glpi-items"><div class="glpi-item">Incidents matériels</div><div class="glpi-item">Pannes logicielles</div><div class="glpi-item">Accès & droits</div><div class="glpi-item">Mise à jour système</div></div></div>
-      <div class="glpi-card card"><div class="glpi-ic" style="background:#FFF3E0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="glpi-val" style="color:#E65100">18</div><div class="glpi-lbl">Incidents gérés</div><div class="glpi-sub">RÉSOLUTION PROACTIVE</div><div class="glpi-items"><div class="glpi-item">Incidents réseau</div><div class="glpi-item">Coupure de service</div><div class="glpi-item">Virus / malware</div><div class="glpi-item">Perte de données</div></div></div>
-      <div class="glpi-card card"><div class="glpi-ic" style="background:#E8EAF6"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#283593" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><div class="glpi-val" style="color:#283593;font-size:36px;line-height:1.3">SLA</div><div class="glpi-lbl">Compétences GLPI</div><div class="glpi-sub">DOCUMENTATION & SUIVI</div><div class="glpi-items"><div class="glpi-item">Respect des SLA</div><div class="glpi-item">Priorisation P1-P4</div><div class="glpi-item">Documentation tickets</div><div class="glpi-item">Inventaire des assets</div></div></div>
+      
+      <div class="glpi-card card">
+        <div class="glpi-ic" style="background:#E0F7FA">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="glpi-val" style="color:#0891B2">ITSM</div>
+        <div class="glpi-lbl">Gestion des Services</div>
+        <div class="glpi-sub">SIMULATION HELPDESK</div>
+        <div class="glpi-items">
+          <div class="glpi-item">Modélisation du cycle du ticket</div>
+          <div class="glpi-item">Matrice de priorisation (P1-P4)</div>
+          <div class="glpi-item">Configuration de comptes tests</div>
+          <div class="glpi-item">Scénarios de pannes fictives</div>
+        </div>
+      </div>
+
+      <div class="glpi-card card">
+        <div class="glpi-ic" style="background:#FFF3E0">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="glpi-val" style="color:#E65100">3</div>
+        <div class="glpi-lbl">Incidents Résolus</div>
+        <div class="glpi-sub">DÉPANNAGE DE LA STACK</div>
+        <div class="glpi-items">
+          <div class="glpi-item">Conflit de port 3306 (Wamp)</div>
+          <div class="glpi-item">Analyse de processus (PID CLI)</div>
+          <div class="glpi-item">Compatibilité Auth MySQL 8</div>
+          <div class="glpi-item">Contournement Service Agent</div>
+        </div>
+      </div>
+
+      <div class="glpi-card card">
+        <div class="glpi-ic" style="background:#E8EAF6">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#283593" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <div class="glpi-val" style="color:#283593">ITAM</div>
+        <div class="glpi-lbl">Inventaire Automatisé</div>
+        <div class="glpi-sub">FUSIONINVENTORY</div>
+        <div class="glpi-items">
+          <div class="glpi-item">Déploiement de l'agent local</div>
+          <div class="glpi-item">Collecte & injection de rapports</div>
+          <div class="glpi-item">Audit automatique du Hardware</div>
+          <div class="glpi-item">Cartographie des logiciels</div>
+        </div>
+      </div>
     </div>
-    <div class="glpi-badges"><span class="chip">Gestion des tickets</span><span class="chip">SLA & priorisation</span><span class="chip">Documentation</span><span class="chip">Inventaire IT</span></div>
-  </div>
+
+    <div class="glpi-demo-banner">
+      <div class="demo-text">
+        <h3>Démonstration & REX Technique</h3>
+        <p>Accédez au compte-rendu complet détaillant l'architecture mise en place, les blocages système rencontrés et la méthodologie de résolution.</p>
+      </div>
+      <a href="presentation_complete_glpi.html" target="_blank" class="glpi-btn-demo">
+        Voir la Présentation Interactive
+      </a>
+    </div>
+
+    <div class="glpi-badges">
+      <span class="chip">Maquette locale</span>
+      <span class="chip">Inventaire Automatique</span>
+      <span class="chip">Dépannage WampServer</span>
+      <span class="chip">Architecture ITSM / ITAM</span>
+    </div>
+  
 </section>
 
 <!-- VEILLE -->
