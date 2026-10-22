@@ -118,8 +118,13 @@
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .tech-lab { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
     .tech { display: flex; gap: 12px; flex-wrap: wrap; }
-    .tech-i { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff; background: var(--c); box-shadow: 0 6px 18px rgba(0,0,0,.35); transition: transform .2s; }
-    .tech-i:hover { transform: translateY(-3px); }
+    .tech-i { --c: #6366f1; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; position: relative;
+      background: radial-gradient(120% 95% at 28% 12%, color-mix(in srgb, var(--c) 46%, #2b3272) 0%, transparent 62%), linear-gradient(160deg, color-mix(in srgb, var(--c) 24%, #161c40) 0%, #090c20 100%);
+      border: 1px solid color-mix(in srgb, var(--c) 52%, transparent);
+      box-shadow: 0 10px 20px -8px color-mix(in srgb, var(--c) 70%, transparent), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -6px 12px rgba(0,0,0,.45);
+      transition: transform .2s, box-shadow .25s; }
+    .tech-i img { width: 24px; height: 24px; object-fit: contain; filter: drop-shadow(0 0 5px color-mix(in srgb, var(--c) 70%, transparent)); }
+    .tech-i:hover { transform: translateY(-3px); box-shadow: 0 14px 26px -8px color-mix(in srgb, var(--c) 85%, transparent), 0 0 22px -4px color-mix(in srgb, var(--c) 70%, transparent), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -6px 12px rgba(0,0,0,.4); }
 
     /* hero visual */
     .hero-visual { position: relative; min-height: 560px; display: flex; justify-content: center; align-items: flex-end; }
@@ -165,20 +170,47 @@
     .ainfo-lab { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
     .ainfo-val { font-size: 14px; font-weight: 600; margin-top: 3px; }
 
-    /* ══ SKILLS ══ */
-    #skills { padding: 96px 0; background: var(--bg); }
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .sk { padding: 22px; }
-    .sk-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-    .sk-icon { width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center; flex-shrink: 0; background: color-mix(in srgb, var(--c) 16%, transparent); color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 28%, transparent); }
-    .sk-id { flex: 1; min-width: 0; }
-    .sk-cat { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
-    .sk-name { font-size: 15px; font-weight: 600; margin-top: 2px; }
-    .sk-pct { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--p-soft); }
-    .sk-track { height: 6px; background: rgba(255,255,255,.07); border-radius: 4px; overflow: hidden; }
-    .sk-fill { height: 100%; border-radius: 4px; width: 0; background: var(--grad); box-shadow: 0 0 14px rgba(99,102,241,.5); }
-    .sk-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-    .sk-tag { padding: 3px 9px; border-radius: 6px; font-size: 11px; font-weight: 500; font-family: var(--mono); background: rgba(255,255,255,.04); border: 1px solid var(--line); color: var(--mut); }
+    /* ══ SKILLS / STACK ══ */
+    #skills { padding: 96px 0; background: var(--bg); position: relative; overflow: hidden; }
+    #skills::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(760px 380px at 50% 0%, rgba(99,102,241,.11), transparent 70%); }
+    #skills .wrap { position: relative; }
+    .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .stack-cat { padding: 22px 18px 20px; }
+    .stack-cat:hover { transform: none; }
+    .cat-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding: 0 4px; }
+    .cat-num { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--p-soft); background: rgba(99,102,241,.12); border: 1px solid rgba(99,102,241,.3); border-radius: 6px; padding: 3px 7px; }
+    .cat-name { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
+    .cat-count { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--dim); }
+    .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .tile {
+      --c: #6366f1; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;
+      gap: 12px; padding: 16px 4px 12px; border-radius: 14px; border: 1px solid transparent;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), background .25s, border-color .25s; transform-style: preserve-3d;
+    }
+    .tile:hover { background: color-mix(in srgb, var(--c) 7%, transparent); border-color: color-mix(in srgb, var(--c) 26%, transparent); }
+    .t-ico {
+      position: relative; width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center;
+      background:
+        radial-gradient(120% 95% at 28% 12%, color-mix(in srgb, var(--c) 46%, #2b3272) 0%, transparent 62%),
+        linear-gradient(160deg, color-mix(in srgb, var(--c) 24%, #161c40) 0%, #090c20 100%);
+      border: 1px solid color-mix(in srgb, var(--c) 52%, transparent);
+      box-shadow:
+        0 14px 26px -10px color-mix(in srgb, var(--c) 70%, transparent),
+        0 0 24px -6px color-mix(in srgb, var(--c) 55%, transparent),
+        inset 0 1.5px 0 rgba(255,255,255,.32),
+        inset 0 -10px 18px rgba(0,0,0,.45);
+      transform: translateZ(26px); transition: box-shadow .3s;
+    }
+    .t-ico::before { content: ''; position: absolute; left: 3px; right: 3px; top: 3px; height: 46%; border-radius: 15px 15px 40% 40% / 15px 15px 18px 18px; background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0)); pointer-events: none; }
+    .t-ico::after { content: ''; position: absolute; left: 14%; right: 14%; bottom: -15px; height: 12px; border-radius: 50%; background: color-mix(in srgb, var(--c) 60%, transparent); filter: blur(9px); opacity: .65; transition: opacity .3s; pointer-events: none; }
+    .t-ico img { position: relative; z-index: 1; width: 38px; height: 38px; object-fit: contain; filter: drop-shadow(0 0 7px color-mix(in srgb, var(--c) 75%, transparent)) drop-shadow(0 3px 2px rgba(0,0,0,.55)); }
+    .tile:hover .t-ico { box-shadow: 0 18px 32px -10px color-mix(in srgb, var(--c) 85%, transparent), 0 0 38px -4px color-mix(in srgb, var(--c) 75%, transparent), inset 0 1.5px 0 rgba(255,255,255,.4), inset 0 -10px 18px rgba(0,0,0,.4); }
+    .tile:hover .t-ico::after { opacity: 1; }
+    .t-name { font-size: 12.5px; font-weight: 600; line-height: 1.25; transform: translateZ(12px); }
+    .t-sub { display: block; font-family: var(--mono); font-size: 9.5px; font-weight: 500; color: var(--dim); margin-top: 3px; line-height: 1.3; }
+    .extra { display: flex; flex-direction: column; gap: 16px; padding: 0 4px; }
+    .extra-h { font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+    .extra-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
     /* ══ TIMELINE ══ */
     #timeline { background: var(--bg2); padding: 96px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -301,12 +333,12 @@
       .hero-content { padding: 44px 0 20px; }
       .hero-visual { min-height: 500px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
       .glpi-grid, .veille-grid { grid-template-columns: 1fr; }
       .about-info { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 720px) {
-      .proj-grid, .skills-grid { grid-template-columns: 1fr; }
+      .proj-grid, .stack-grid { grid-template-columns: 1fr; }
       .frow { grid-template-columns: 1fr; }
       .about-info { grid-template-columns: 1fr; }
       .glpi-demo-banner { flex-direction: column; text-align: center; padding: 24px; }
@@ -386,14 +418,14 @@
         <div>
           <div class="tech-lab">Technologies utilisées</div>
           <div class="tech" aria-label="Technologies utilisées">
-            <span class="tech-i" style="--c:#e44d26" title="HTML5">HTML</span>
-            <span class="tech-i" style="--c:#1572b6" title="CSS3">CSS</span>
-            <span class="tech-i" style="--c:#d4b800;color:#111" title="JavaScript">JS</span>
-            <span class="tech-i" style="--c:#777bb3" title="PHP">PHP</span>
-            <span class="tech-i" style="--c:#9b4f96" title="C#">C#</span>
-            <span class="tech-i" style="--c:#512bd4" title=".NET">.NET</span>
-            <span class="tech-i" style="--c:#00758f" title="SQL">SQL</span>
-            <span class="tech-i" style="--c:#f05032" title="Git">Git</span>
+            <span class="tech-i" style="--c:#E34F26" title="HTML5"><img src="image/tech/html5.svg" alt="HTML5" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#2965F1" title="CSS3"><img src="image/tech/css3.svg" alt="CSS3" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#F7DF1E" title="JavaScript"><img src="image/tech/javascript.svg" alt="JavaScript" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#8892BF" title="PHP"><img src="image/tech/php.svg" alt="PHP" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#A179DC" title="C#"><img src="image/tech/csharp.svg" alt="C#" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#7B5CFF" title=".NET"><img src="image/tech/dotnet.svg" alt=".NET" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#4CA3DD" title="MySQL"><img src="image/tech/mysql.svg" alt="MySQL" width="24" height="24"/></span>
+            <span class="tech-i" style="--c:#F05032" title="Git"><img src="image/tech/git.svg" alt="Git" width="24" height="24"/></span>
           </div>
         </div>
       </div>
@@ -452,19 +484,74 @@
 <section id="skills">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="pill">Compétences</div>
-      <h2 class="h2">Mes <span class="g">technologies</span></h2>
+      <div class="pill">Stack technique</div>
+      <h2 class="h2">Les technologies avec lesquelles <span class="g">j'ai travaillé</span></h2>
+      <p class="sec-sub">Langages, frameworks, bases de données et outils utilisés en formation, en stage et sur mes projets.</p>
     </div>
-    <div class="skills-grid" id="sg">
-      <div class="sk card reveal" style="--c:#FB923C"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="sk-id"><div class="sk-cat">Développement</div><div class="sk-name">C# / .NET</div></div><div class="sk-pct">70%</div></div><div class="sk-track"><div class="sk-fill" data-w="70"></div></div><div class="sk-tags"><span class="sk-tag">C#</span><span class="sk-tag">.NET</span><span class="sk-tag">WPF</span></div></div>
-      <div class="sk card reveal" style="--c:#22D3EE"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div><div class="sk-id"><div class="sk-cat">Développement</div><div class="sk-name">Web (PHP / JS)</div></div><div class="sk-pct">80%</div></div><div class="sk-track"><div class="sk-fill" data-w="80"></div></div><div class="sk-tags"><span class="sk-tag">PHP</span><span class="sk-tag">JavaScript</span><span class="sk-tag">HTML/CSS</span></div></div>
-      <div class="sk card reveal" style="--c:#60A5FA"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="sk-id"><div class="sk-cat">Développement</div><div class="sk-name">MySQL / SGBD</div></div><div class="sk-pct">75%</div></div><div class="sk-track"><div class="sk-fill" data-w="75"></div></div><div class="sk-tags"><span class="sk-tag">SQL</span><span class="sk-tag">Merise</span><span class="sk-tag">PDO</span></div></div>
-      <div class="sk card reveal" style="--c:#C084FC"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg></div><div class="sk-id"><div class="sk-cat">Réseaux / Systèmes</div><div class="sk-name">Administration Réseau</div></div><div class="sk-pct">60%</div></div><div class="sk-track"><div class="sk-fill" data-w="60"></div></div><div class="sk-tags"><span class="sk-tag">TCP/IP</span><span class="sk-tag">DNS</span><span class="sk-tag">VPN</span></div></div>
-      <div class="sk card reveal" style="--c:#4ADE80"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div><div class="sk-id"><div class="sk-cat">Réseaux / Systèmes</div><div class="sk-name">Linux &amp; Windows</div></div><div class="sk-pct">65%</div></div><div class="sk-track"><div class="sk-fill" data-w="65"></div></div><div class="sk-tags"><span class="sk-tag">Ubuntu</span><span class="sk-tag">Debian</span><span class="sk-tag">PowerShell</span></div></div>
-      <div class="sk card reveal" style="--c:#F87171"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="sk-id"><div class="sk-cat">Réseaux / Systèmes</div><div class="sk-name">Cybersécurité</div></div><div class="sk-pct">55%</div></div><div class="sk-track"><div class="sk-fill" data-w="55"></div></div><div class="sk-tags"><span class="sk-tag">Firewall</span><span class="sk-tag">VLAN</span><span class="sk-tag">Pentest</span></div></div>
-      <div class="sk card reveal" style="--c:#FBBF24"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg></div><div class="sk-id"><div class="sk-cat">GLPI</div><div class="sk-name">GLPI &amp; ITSM</div></div><div class="sk-pct">72%</div></div><div class="sk-track"><div class="sk-fill" data-w="72"></div></div><div class="sk-tags"><span class="sk-tag">Tickets</span><span class="sk-tag">SLA</span><span class="sk-tag">Assets</span></div></div>
-      <div class="sk card reveal" style="--c:#2DD4BF"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div class="sk-id"><div class="sk-cat">Soft Skills</div><div class="sk-name">Travail d'équipe</div></div><div class="sk-pct">85%</div></div><div class="sk-track"><div class="sk-fill" data-w="85"></div></div><div class="sk-tags"><span class="sk-tag">Agile</span><span class="sk-tag">Git</span><span class="sk-tag">Communication</span></div></div>
-      <div class="sk card reveal" style="--c:#818CF8"><div class="sk-top"><div class="sk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="sk-id"><div class="sk-cat">Soft Skills</div><div class="sk-name">Autonomie &amp; Rigueur</div></div><div class="sk-pct">90%</div></div><div class="sk-track"><div class="sk-fill" data-w="90"></div></div><div class="sk-tags"><span class="sk-tag">Organisation</span><span class="sk-tag">Discipline</span></div></div>
+    <div class="stack-grid">
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">01</span><span class="cat-name">Langages</span><span class="cat-count">6 technos</span></div>
+        <div class="tiles">
+          <div class="tile" style="--c:#A179DC"><div class="t-ico"><img src="image/tech/csharp.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">C#</div></div>
+          <div class="tile" style="--c:#659AD2"><div class="t-ico"><img src="image/tech/cplusplus.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">C++</div></div>
+          <div class="tile" style="--c:#7986CB"><div class="t-ico"><img src="image/tech/c.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">C</div></div>
+          <div class="tile" style="--c:#F89820"><div class="t-ico"><img src="image/tech/java.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Java<span class="t-sub">JavaFX</span></div></div>
+          <div class="tile" style="--c:#8892BF"><div class="t-ico"><img src="image/tech/php.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">PHP<span class="t-sub">PDO</span></div></div>
+          <div class="tile" style="--c:#F7DF1E"><div class="t-ico"><img src="image/tech/javascript.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">JavaScript</div></div>
+        </div>
+      </div>
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">02</span><span class="cat-name">Web &amp; frameworks</span><span class="cat-count">6 technos</span></div>
+        <div class="tiles">
+          <div class="tile" style="--c:#E34F26"><div class="t-ico"><img src="image/tech/html5.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">HTML5</div></div>
+          <div class="tile" style="--c:#2965F1"><div class="t-ico"><img src="image/tech/css3.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">CSS3</div></div>
+          <div class="tile" style="--c:#8C5CF5"><div class="t-ico"><img src="image/tech/bootstrap.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Bootstrap</div></div>
+          <div class="tile" style="--c:#7B5CFF"><div class="t-ico"><img src="image/tech/dotnet.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">.NET<span class="t-sub">ASP.NET · WPF</span></div></div>
+          <div class="tile" style="--c:#61DAFB"><div class="t-ico"><img src="image/tech/react.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">React</div></div>
+          <div class="tile" style="--c:#9FEAF9"><div class="t-ico"><img src="image/tech/electron.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Electron</div></div>
+        </div>
+      </div>
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">03</span><span class="cat-name">Bases de données</span><span class="cat-count">6 technos</span></div>
+        <div class="tiles">
+          <div class="tile" style="--c:#4CA3DD"><div class="t-ico"><img src="image/tech/mysql.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">MySQL</div></div>
+          <div class="tile" style="--c:#C0765A"><div class="t-ico"><img src="image/tech/mariadb.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">MariaDB</div></div>
+          <div class="tile" style="--c:#5B8DEF"><div class="t-ico"><img src="image/tech/postgresql.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">PostgreSQL</div></div>
+          <div class="tile" style="--c:#E3463E"><div class="t-ico"><img src="image/tech/sqlserver.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">SQL Server</div></div>
+          <div class="tile" style="--c:#44A8E0"><div class="t-ico"><img src="image/tech/sqlite.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">SQLite</div></div>
+          <div class="tile" style="--c:#3ECF8E"><div class="t-ico"><img src="image/tech/supabase.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Supabase</div></div>
+        </div>
+      </div>
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">04</span><span class="cat-name">Systèmes &amp; virtualisation</span><span class="cat-count">6 technos</span></div>
+        <div class="tiles">
+          <div class="tile" style="--c:#00A4EF"><div class="t-ico"><img src="image/tech/windows.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Windows Server<span class="t-sub">AD · GPO · DFS</span></div></div>
+          <div class="tile" style="--c:#FCC624"><div class="t-ico"><img src="image/tech/linux.webp" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Linux</div></div>
+          <div class="tile" style="--c:#E95420"><div class="t-ico"><img src="image/tech/ubuntu.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Ubuntu</div></div>
+          <div class="tile" style="--c:#D70A53"><div class="t-ico"><img src="image/tech/debian.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Debian</div></div>
+          <div class="tile" style="--c:#5391FE"><div class="t-ico"><img src="image/tech/powershell.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">PowerShell</div></div>
+          <div class="tile" style="--c:#F7870D"><div class="t-ico"><img src="image/tech/vmware.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">VMware<span class="t-sub">Workstation Pro</span></div></div>
+        </div>
+      </div>
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">05</span><span class="cat-name">Outils &amp; ITSM</span><span class="cat-count">6 technos</span></div>
+        <div class="tiles">
+          <div class="tile" style="--c:#F05032"><div class="t-ico"><img src="image/tech/git.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Git</div></div>
+          <div class="tile" style="--c:#E6EDF3"><div class="t-ico"><img src="image/tech/github.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">GitHub</div></div>
+          <div class="tile" style="--c:#23A9F2"><div class="t-ico"><img src="image/tech/vscode.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">VS Code</div></div>
+          <div class="tile" style="--c:#A074E0"><div class="t-ico"><img src="image/tech/visualstudio.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">Visual Studio</div></div>
+          <div class="tile" style="--c:#FE315D"><div class="t-ico"><img src="image/tech/intellij.svg" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">IntelliJ IDEA</div></div>
+          <div class="tile" style="--c:#FEC95C"><div class="t-ico"><img src="image/tech/glpi.png" alt="" width="38" height="38" loading="lazy"/></div><div class="t-name">GLPI<span class="t-sub">ITSM · ITAM</span></div></div>
+        </div>
+      </div>
+      <div class="stack-cat card reveal">
+        <div class="cat-head"><span class="cat-num">06</span><span class="cat-name">Compétences complémentaires</span></div>
+        <div class="extra">
+          <div><div class="extra-h">Réseau &amp; sécurité</div><div class="extra-tags"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">VPN</span><span class="chip">VLAN</span><span class="chip">Firewall</span><span class="chip">Pentest</span></div></div>
+          <div><div class="extra-h">Conception &amp; méthodes</div><div class="extra-tags"><span class="chip">Merise</span><span class="chip">UML</span><span class="chip">Agile</span><span class="chip">Tickets &amp; SLA</span></div></div>
+          <div><div class="extra-h">Savoir-être</div><div class="extra-tags"><span class="chip">Travail d'équipe</span><span class="chip">Communication</span><span class="chip">Autonomie</span><span class="chip">Rigueur</span><span class="chip">Organisation</span></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -725,18 +812,15 @@
     setTimeout(function () { pi = (pi + 1) % ph.length; pe.innerHTML = '<em>›</em>' + ph[pi]; pe.classList.remove('hidden'); }, 400);
   }, 3000);
 
-  // skill bars
-  var sg = document.getElementById('sg');
-  if (sg && 'IntersectionObserver' in window) {
-    var skObs = new IntersectionObserver(function (en) {
-      if (en[0].isIntersecting) {
-        document.querySelectorAll('.sk-fill').forEach(function (b) { b.style.transition = 'width 1.4s ease'; b.style.width = b.dataset.w + '%'; });
-        skObs.disconnect();
-      }
-    }, { threshold: 0.15 });
-    skObs.observe(sg);
-  } else {
-    document.querySelectorAll('.sk-fill').forEach(function (b) { b.style.width = b.dataset.w + '%'; });
+  // 3D tilt on technology tiles (mouse only, respects reduced motion)
+  if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.tile').forEach(function (t) {
+      t.addEventListener('pointermove', function (e) {
+        var r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        t.style.transform = 'perspective(520px) translateY(-4px) rotateX(' + (-y * 24).toFixed(1) + 'deg) rotateY(' + (x * 24).toFixed(1) + 'deg)';
+      });
+      t.addEventListener('pointerleave', function () { t.style.transform = ''; });
+    });
   }
 
   // reveal on scroll
