@@ -127,24 +127,17 @@
     .tech-i:hover { transform: translateY(-3px); box-shadow: 0 14px 26px -8px color-mix(in srgb, var(--c) 85%, transparent), 0 0 22px -4px color-mix(in srgb, var(--c) 70%, transparent), inset 0 1px 0 rgba(255,255,255,.35), inset 0 -6px 12px rgba(0,0,0,.4); }
 
     /* hero visual */
-    .hero-visual { position: relative; min-height: 560px; display: flex; justify-content: center; align-items: flex-end; }
-    .hero-circle { position: absolute; top: 34px; left: 47%; width: min(430px, 82%); aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%;
-      background: radial-gradient(circle at 30% 22%, #9a86ff 0%, #6f55f0 48%, #4a34c8 100%); box-shadow: 0 0 120px rgba(99,102,241,.42), inset 0 0 60px rgba(255,255,255,.06); }
-    .hero-person { position: relative; z-index: 2; width: min(470px, 96%); height: auto; aspect-ratio: 818 / 864; transform: translateX(-7%);
-      -webkit-mask-image: linear-gradient(to bottom, #000 86%, transparent 100%); mask-image: linear-gradient(to bottom, #000 86%, transparent 100%); }
-    .hero-dots { position: absolute; top: 56px; right: 6%; width: 92px; height: 66px; z-index: 1; opacity: .55;
-      background-image: radial-gradient(circle, #9aa0ff 1.4px, transparent 1.6px); background-size: 13px 13px; }
-    .hero-arrow { position: absolute; left: -4%; bottom: 150px; z-index: 3; color: #b9bcff; opacity: .85; }
-    .code-card {
-      position: absolute; z-index: 4; right: -3%; top: 168px; width: 240px; padding: 0 0 14px;
-      background: rgba(12,16,40,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--line2); border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.5);
-      font-family: var(--mono); font-size: 11.5px; line-height: 1.7; color: #c8cdf0; animation: floaty 6s ease-in-out infinite;
+    .hero-visual { position: relative; min-height: 560px; display: flex; justify-content: center; align-items: center; }
+    .hero-circle {
+      position: relative; z-index: 2; width: min(460px, 88%); aspect-ratio: 1; border-radius: 50%; overflow: hidden; isolation: isolate;
+      background: radial-gradient(circle at 30% 22%, #9a86ff 0%, #6f55f0 48%, #4a34c8 100%);
+      box-shadow: 0 0 120px rgba(99,102,241,.42), 0 0 0 10px rgba(139,92,246,.10), 0 0 0 11px rgba(165,168,255,.16);
     }
-    .code-bar { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid var(--line); color: var(--mut); font-size: 11px; }
-    .code-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,.2); }
-    .code-body { padding: 10px 14px 0; white-space: pre; overflow: hidden; }
-    .c-k { color: #7dd3fc; } .c-s { color: #fdba74; } .c-v { color: #c4b5fd; } .c-d { color: #7b82ad; }
+    .hero-circle::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), inset 0 -30px 60px rgba(40,20,120,.25); pointer-events: none; }
+    .hero-person { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-dots { position: absolute; top: 40px; right: 4%; width: 92px; height: 66px; z-index: 1; opacity: .55;
+      background-image: radial-gradient(circle, #9aa0ff 1.4px, transparent 1.6px); background-size: 13px 13px; }
+    .hero-arrow { position: absolute; left: 0; bottom: 70px; z-index: 3; color: #b9bcff; opacity: .85; }
 
     /* ══ ABOUT ══ */
     #about { background: var(--bg2); padding: 96px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -319,10 +312,8 @@
     .ftop:hover { color: #fff; border-color: var(--p1); }
 
     /* ══ ANIMATIONS ══ */
-    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .code-card { animation: none; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
     }
 
@@ -331,7 +322,7 @@
       .nav-links { display: none; } .nav-burger { display: block; }
       .hero-grid { grid-template-columns: 1fr; min-height: 0; gap: 0; }
       .hero-content { padding: 44px 0 20px; }
-      .hero-visual { min-height: 500px; }
+      .hero-visual { min-height: 480px; padding-bottom: 30px; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .stack-grid { grid-template-columns: 1fr 1fr; }
       .glpi-grid, .veille-grid { grid-template-columns: 1fr; }
@@ -343,13 +334,8 @@
       .about-info { grid-template-columns: 1fr; }
       .glpi-demo-banner { flex-direction: column; text-align: center; padding: 24px; }
       .glpi-btn-demo { width: 100%; }
-      .code-card { right: 2%; top: auto; bottom: 22px; width: 206px; font-size: 10px; line-height: 1.6; }
-      .code-bar { padding: 7px 12px; }
-      .code-body { padding: 8px 12px 0; }
-      .hero-person { transform: none; }
-      .hero-circle { left: 50%; }
       .hero-arrow { display: none; }
-      .hero-visual { min-height: 440px; }
+      .hero-visual { min-height: 380px; padding: 10px 0 30px; }
       .stat { padding: 22px 14px; gap: 12px; }
       .stat-v { font-size: 24px; }
       #about, #skills, #timeline, #projects, #glpi, #veille, #contact { padding: 72px 0; }
@@ -432,17 +418,9 @@
 
       <div class="hero-visual">
         <div class="hero-dots" aria-hidden="true"></div>
-        <div class="hero-circle" aria-hidden="true"></div>
         <svg class="hero-arrow" width="64" height="92" viewBox="0 0 64 92" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M50 6C14 18 4 54 30 84"/><path d="M20 76l10 9 6-13"/></svg>
-        <img class="hero-person" src="image/lorryc-hero.webp" width="818" height="864" alt="Portrait de Lorryc Razafimahefa" fetchpriority="high" />
-        <div class="code-card" aria-hidden="true">
-          <div class="code-bar"><span>&lt;/&gt; Code</span><span class="code-dot"></span></div>
-          <div class="code-body"><span class="c-k">const</span> <span class="c-v">developer</span> = {
-  name: <span class="c-s">"Lorryc"</span>,
-  skills: [<span class="c-s">"C#"</span>, <span class="c-s">".NET"</span>,
-    <span class="c-s">"PHP"</span>, <span class="c-s">"SQL"</span>],
-  passion: <span class="c-s">"Building apps"</span>
-};</div>
+        <div class="hero-circle">
+          <img class="hero-person" src="image/lorryc-portrait.webp" width="960" height="960" alt="Portrait de Lorryc Razafimahefa" fetchpriority="high" />
         </div>
       </div>
     </div>
